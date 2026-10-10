@@ -1,0 +1,181 @@
+:root {
+  --fondo: #efe6ff;
+  --tarjeta: #ffffff;
+  --tinta: #2e1a57;
+  --morado: #7c3aed;
+  --morado-oscuro: #5b21b6;
+  --morado-medio: #a78bfa;
+  --lila: #f5efff;
+  --linea: #e4d7fb;
+  --rosa: #f472b6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Parte superior con el botón */
+.barra {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 1rem 0;
+}
+
+.boton {
+  min-width: 9rem;
+  padding: 0.75rem 2.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--morado);
+  color: #ffffff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.boton:hover {
+  background: var(--morado-oscuro);
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.35);
+}
+
+.boton:focus-visible {
+  outline: 3px solid var(--rosa);
+  outline-offset: 3px;
+}
+
+/* Contenido */
+.contenedor {
+  flex: 1;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 3rem;
+}
+
+h1 {
+  margin: 0 0 2rem;
+  color: var(--morado-oscuro);
+  font-size: clamp(1.75rem, 7vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  text-align: center;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin: 0.75rem auto 0;
+  border-radius: 2px;
+  background: var(--rosa);
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  background: var(--tarjeta);
+  border-radius: 1rem;
+  font-size: clamp(1.05rem, 4.5vw, 1.35rem);
+}
+
+caption {
+  padding-bottom: 1rem;
+  color: var(--morado);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--linea);
+}
+
+thead th {
+  background: var(--morado);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-bottom: 3px solid var(--rosa);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--lila);
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+td:last-child {
+  font-weight: 700;
+  color: var(--morado);
+}
+
+/* Pie de página */
+.pie {
+  padding: 1.5rem 1rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: linear-gradient(90deg, var(--morado-oscuro), var(--morado) 55%, var(--rosa));
+  color: #ffffff;
+  text-align: center;
+}
+
+.pie p {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.pie strong {
+  font-weight: 700;
+  padding-bottom: 0.15rem;
+  border-bottom: 2px solid var(--rosa);
+}
+
+/* Pantallas medianas y grandes */
+@media (min-width: 600px) {
+  .barra {
+    padding-top: 2rem;
+  }
+
+  .contenedor {
+    padding-top: 3rem;
+  }
+
+  th,
+  td {
+    padding: 0.9rem 1.5rem;
+  }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .boton {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 0.6rem 0.5rem;
+  }
+}
