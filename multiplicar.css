@@ -4,7 +4,6 @@
   --tinta: #2e1a57;
   --morado: #7c3aed;
   --morado-oscuro: #5b21b6;
-  --morado-medio: #a78bfa;
   --lila: #f5efff;
   --linea: #e4d7fb;
   --rosa: #f472b6;
@@ -85,50 +84,37 @@ h1::after {
   background: var(--rosa);
 }
 
-/* Tabla */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
-  background: var(--tarjeta);
-  border-radius: 1rem;
-  font-size: clamp(1.05rem, 4.5vw, 1.35rem);
-}
-
-caption {
+.leyenda {
   padding-bottom: 1rem;
   color: var(--morado);
   font-size: 0.9rem;
   text-align: center;
 }
 
-th,
-td {
-  padding: 0.8rem 1rem;
-  text-align: center;
+/* Tabla hecha con divs: cada fila es un solo div */
+.tabla {
+  overflow: hidden;
+  background: var(--tarjeta);
+  border-top: 4px solid var(--morado);
+  border-radius: 1rem;
+}
+
+.fila {
+  padding: 0.9rem 1rem;
   border-bottom: 1px solid var(--linea);
+  color: var(--morado-oscuro);
+  font-size: clamp(1.6rem, 7vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-align: center;
 }
 
-thead th {
-  background: var(--morado);
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  border-bottom: 3px solid var(--rosa);
-}
-
-tbody tr:nth-child(even) {
+.fila:nth-child(even) {
   background: var(--lila);
 }
 
-tbody tr:last-child td {
+.fila:last-child {
   border-bottom: 0;
-}
-
-td:last-child {
-  font-weight: 700;
-  color: var(--morado);
 }
 
 /* Pie de página */
@@ -162,9 +148,8 @@ td:last-child {
     padding-top: 3rem;
   }
 
-  th,
-  td {
-    padding: 0.9rem 1.5rem;
+  .fila {
+    padding: 1rem 1.5rem;
   }
 }
 
@@ -174,8 +159,7 @@ td:last-child {
     width: 100%;
   }
 
-  th,
-  td {
-    padding: 0.6rem 0.5rem;
+  .fila {
+    padding: 0.75rem 0.5rem;
   }
 }
