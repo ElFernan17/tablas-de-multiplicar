@@ -24,11 +24,99 @@ body {
   line-height: 1.5;
 }
 
-/* Parte superior con el botón */
+/* Parte superior: pregunta, caja y botón */
 .barra {
   display: flex;
   justify-content: center;
   padding: 1.5rem 1rem 0;
+}
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.etiqueta {
+  color: var(--morado-oscuro);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Mensajes de ayuda y de error */
+.ayuda {
+  color: var(--morado);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.error {
+  display: none;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: #fde7f1;
+  color: #be185d;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.grupo:has(.campo:invalid) .error {
+  display: block;
+}
+
+.grupo:has(.campo:invalid) .ayuda {
+  display: none;
+}
+
+.campo:invalid {
+  border-color: var(--rosa);
+}
+
+/* Caja de texto numérica */
+.campo {
+  width: 9rem;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--linea);
+  border-radius: 999px;
+  background: var(--tarjeta);
+  color: var(--morado-oscuro);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  -moz-appearance: textfield;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo::placeholder {
+  color: #a994d6;
+  font-weight: 400;
+}
+
+.campo::-webkit-outer-spin-button,
+.campo::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.campo:focus {
+  outline: none;
+  border-color: var(--morado);
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.35);
 }
 
 .boton {
@@ -54,6 +142,54 @@ body {
 .boton:focus-visible {
   outline: 3px solid var(--rosa);
   outline-offset: 3px;
+}
+
+/* Instrucciones en 3 pasos */
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 40rem;
+  margin: 1.5rem auto 0;
+  padding: 0 1rem;
+}
+
+.paso {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.numero {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--morado);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.paso:nth-child(2) .numero {
+  background: var(--morado-oscuro);
+}
+
+.paso:nth-child(3) .numero {
+  background: var(--rosa);
+}
+
+.texto {
+  color: var(--tinta);
+  font-size: 0.9rem;
+  line-height: 1.3;
 }
 
 /* Contenido */
@@ -117,6 +253,13 @@ h1::after {
   border-bottom: 0;
 }
 
+.nota {
+  margin-top: 1rem;
+  color: var(--morado);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 /* Pie de página */
 .pie {
   padding: 1.5rem 1rem;
@@ -138,6 +281,14 @@ h1::after {
   border-bottom: 2px solid var(--rosa);
 }
 
+/* Pantallas pequeñas: los pasos van uno debajo del otro */
+@media (max-width: 599px) {
+  .pasos {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+  }
+}
+
 /* Pantallas medianas y grandes */
 @media (min-width: 600px) {
   .barra {
@@ -155,7 +306,8 @@ h1::after {
 
 /* Pantallas muy pequeñas */
 @media (max-width: 360px) {
-  .boton {
+  .boton,
+  .campo {
     width: 100%;
   }
 
